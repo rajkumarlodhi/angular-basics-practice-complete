@@ -1,0 +1,11 @@
+<h3>Users Components</h3>
+<input type="text" class="form-control" (input)="onUpdateUser($event)">
+<input type="text" class="form-control" [(ngModel)]="userName">
+{{userName}}
+
+<button class="btn btn-primary" [disabled]="!allowNewUser" (click)="changeUserCreatedStatus()">Add User</button>
+<div *ngIf="isUserCreated; else nouser">User is created the username is {{userName}}</div>
+<ng-template #nouser>
+    <div>No user is created</div>
+</ng-template>
+<app-user *ngFor="user of users;"></app-user>

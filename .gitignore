@@ -1,0 +1,85 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+# for my-angular-app
+# Compiled output
+/my-angular-app/dist
+/my-angular-app/tmp
+/my-angular-app/out-tsc
+/my-angular-app/bazel-out
+
+# Node
+/my-angular-app/node_modules
+/my-angular-app/npm-debug.log
+/my-angular-app/yarn-error.log
+
+# IDEs and editors
+/my-angular-app/.idea/
+/my-angular-app/.project
+/my-angular-app/.classpath
+/my-angular-app/.c9/
+/my-angular-app/*.launch
+/my-angular-app/.settings/
+/my-angular-app/*.sublime-workspace
+
+# Visual Studio Code
+/my-angular-app/.vscode/*
+/my-angular-app/!.vscode/settings.json
+/my-angular-app/!.vscode/tasks.json
+/my-angular-app/!.vscode/launch.json
+/my-angular-app/!.vscode/extensions.json
+/my-angular-app/.history/*
+
+# Miscellaneous
+/my-angular-app/.angular/cache
+/my-angular-app/.sass-cache/
+/my-angular-app/connect.lock
+/my-angular-app/coverage
+/my-angular-app/libpeerconnection.log
+/my-angular-app/testem.log
+/my-angular-app/typings
+
+# System files
+/my-angular-app/.DS_Store
+/my-angular-app/Thumbs.db
+
+
+# for sampleproj gitignore rules
+# Compiled output
+/sampleproj/dist
+/sampleproj/tmp
+/sampleproj/out-tsc
+/sampleproj/bazel-out
+
+# Node
+/sampleproj/node_modules
+/sampleproj/npm-debug.log
+/sampleproj/yarn-error.log
+
+# IDEs and editors
+/sampleproj/.idea/
+/sampleproj/.project
+/sampleproj/.classpath
+/sampleproj/.c9/
+/sampleproj/*.launch
+/sampleproj/.settings/
+/sampleproj/*.sublime-workspace
+
+# Visual Studio Code
+/sampleproj/.vscode/*
+/sampleproj/!.vscode/settings.json
+/sampleproj/!.vscode/tasks.json
+/sampleproj/!.vscode/launch.json
+/sampleproj/!.vscode/extensions.json
+/sampleproj/.history/*
+
+# Miscellaneous
+/sampleproj/.angular/cache
+/sampleproj/.sass-cache/
+/sampleproj/connect.lock
+/sampleproj/coverage
+/sampleproj/libpeerconnection.log
+/sampleproj/testem.log
+/sampleproj/typings
+
+# System files
+/sampleproj/.DS_Store
+/sampleproj/Thumbs.db
