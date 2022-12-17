@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-add-user',
@@ -7,13 +7,15 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class AddUserComponent implements OnInit {
   @Output() userAdded = new EventEmitter<string>();
-  constructor() { }
 
+  @ViewChild('userInput') userInput: any;
+
+  constructor() { }
   ngOnInit(): void {
   }
-  onUserAdded(input: any) {
-    console.log(input.value);
-    this.userAdded.emit(input.value)
+  onUserAdded() {
+    console.log(this.userInput.nativeElement.value);
+    this.userAdded.emit(this.userInput.nativeElement.value)
   }
 
 }
