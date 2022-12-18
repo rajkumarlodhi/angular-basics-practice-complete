@@ -7,7 +7,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   // encapsulation: ViewEncapsulation.None //to apply css to all components which are using in users.ts
 })
 export class UsersComponent implements OnInit {
-  usersList: string[] = [];
+  usersList: string[] = ['Rajkumar'];
+  name: string = "Rajkumar";
   constructor() { }
 
   ngOnInit(): void {
@@ -15,6 +16,9 @@ export class UsersComponent implements OnInit {
   onUserAdded(user: any) {
     console.log(user, 'userdd++++++== on users comppontn');
     this.usersList.push(user);
+  }
+  onNameChange() {
+    this.name = 'Hai Rajkumar';
   }
 
 }
