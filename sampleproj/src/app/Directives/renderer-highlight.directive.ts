@@ -14,16 +14,16 @@ export class RendererHighlightDirective implements OnInit {
   // @HostListener('click') OnClick() {
   //   this.renderer.setStyle(this.element.nativeElement, 'background-color', 'green');
   // }
-  @HostListener('click') OnClick() {
+  @HostListener('click') OnClick(event: Event) {
     this.color = 'green'
   }
-  @HostListener('onmouseenter') OnMouseEnter() {
+  @HostListener('onmouseenter') OnMouseEnter(event: Event) {
     this.color = 'green'
   }
-  @HostListener('onmouseleave') OnMouseLeave() {
+  @HostListener('onmouseleave') OnMouseLeave(event: Event) {
     this.color = 'yellow'
   }
-  @HostListener('onmousemove') onMouseMove() {
+  @HostListener('onmousemove') onMouseMove(event: Event) {
     this.color = 'gray'
   }
 
