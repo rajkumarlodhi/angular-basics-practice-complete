@@ -10,4 +10,15 @@
 
 <p appHighlightText>Added background color using custom directive </p>
 
-<div appRendererHighlight>Added background color using Renderer2 on directive</div>
+<div [appRendererHighlight]="'yellow'" [highlightColor]="'green'">Added background color using Renderer2 on directive
+</div>
+
+<div *ngIf="isAvailable">
+    This div will show only when isAvailable is true
+</div>
+
+<ng-template [ngIf]="isAvailable">
+    <div>
+        This div show only when isAvailable is true And( No need to star(*) before ngIf with using ng-template )
+    </div>
+</ng-template>

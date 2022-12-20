@@ -9,6 +9,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class UsersComponent implements OnInit {
   usersList: string[] = ['Rajkumar'];
   name: string = "Rajkumar";
+  isAvailable: boolean = true;
   constructor() { }
 
   ngOnInit(): void {
