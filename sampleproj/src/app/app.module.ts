@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { UsersComponent } from './users/users.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { HighlightTextDirective } from './Directives/HighlightTextDirective';
+import { RendererHighlightDirective } from './Directives/renderer-highlight.directive';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { HighlightTextDirective } from './Directives/HighlightTextDirective';
     UserComponent,
     UsersComponent,
     AddUserComponent,
-    HighlightTextDirective
+    HighlightTextDirective,
+    RendererHighlightDirective,
   ],
   imports: [
     BrowserModule,
