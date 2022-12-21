@@ -27,3 +27,20 @@
 <div *appUlternateIf="isAvailable">
     This condition enables by using Custom Structural directive
 </div>
+
+<div [ngSwitch]="value">
+    <div *ngSwitchCase="10">
+        Value is: {{value}}.
+    </div>
+    <div *ngSwitchCase="5">
+        Value is: {{value}}
+    </div>
+    <div *ngSwitchDefault>
+        Deafault value
+    </div>
+</div>
+
+<!-- <container-element [ngSwitch]="value">
+    <div *ngSwitchCase="10">10</div>
+    <div *ngSwitchCase="5">5</div>
+</container-element> -->

@@ -10,38 +10,38 @@ export class UserComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
   @Input() name = '';
   @ContentChild('userParagraph') userParagraph: string = '';
   constructor() {
-    console.log('constructor called');
+    //console.log('constructor called');
   }
 
   ngOnChanges() {
-    console.log('ngOnChange called');
+    // console.log('ngOnChange called');
   }
 
   ngOnInit(): void {
-    console.log(this.userParagraph, '--userParagraph');
-    console.log('ngOnInit Called');
+    // console.log(this.userParagraph, '--userParagraph');
+    // console.log('ngOnInit Called');
   }
 
   ngDoCheck(): void {
-    console.log(this.userParagraph, 'userParagraph');
-    console.log('ngDoCheck is called!');
+    // console.log(this.userParagraph, 'userParagraph');
+    // console.log('ngDoCheck is called!');
   }
 
   ngAfterContentInit(): void {
-    console.log(this.userParagraph, 'userParagraph');
-    console.log('ngAfterContentInit is called');
+    // console.log(this.userParagraph, 'userParagraph');
+    // console.log('ngAfterContentInit is called');
   }
 
   ngAfterContentChecked(): void {
-    console.log('ngAfterContentChecked is called');
+    //console.log('ngAfterContentChecked is called');
   }
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit is called');
+    //console.log('ngAfterViewInit is called');
   }
   ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked is called');
+    //console.log('ngAfterViewChecked is called');
   }
   ngOnDestroy(): void {
-    console.log('ngOnDestroy is called');
+    //console.log('ngOnDestroy is called');
   }
 }
