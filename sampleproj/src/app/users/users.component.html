@@ -13,6 +13,7 @@
 <div [appRendererHighlight]="'yellow'" [highlightColor]="'green'">Added background color using Renderer2 on directive
 </div>
 
+<button class="btn btn-warning" (click)="isAvailable = !isAvailable">Toggle button</button>
 <div *ngIf="isAvailable">
     This div will show only when isAvailable is true
 </div>
@@ -22,3 +23,7 @@
         This div show only when isAvailable is true And( No need to star(*) before ngIf with using ng-template )
     </div>
 </ng-template>
+
+<div *appUlternateIf>
+    Custom Structural directive
+</div>
