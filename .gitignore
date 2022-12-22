@@ -83,3 +83,49 @@
 # System files
 /sampleproj/.DS_Store
 /sampleproj/Thumbs.db
+
+
+
+# for angularservice project github rules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/angularservice/dist
+/angularservice/tmp
+/angularservice/out-tsc
+/angularservice/bazel-out
+
+# Node
+/angularservice/node_modules
+/angularservice/npm-debug.log
+/angularservice/yarn-error.log
+
+# IDEs and editors
+/angularservice/.idea/
+/angularservice/.project
+/angularservice/.classpath
+/angularservice/.c9/
+/angularservice/*.launch
+/angularservice/.settings/
+/angularservice/*.sublime-workspace
+
+# Visual Studio Code
+/angularservice/.vscode/*
+/angularservice/!.vscode/settings.json
+/angularservice/!.vscode/tasks.json
+/angularservice/!.vscode/launch.json
+/angularservice/!.vscode/extensions.json
+/angularservice/.history/*
+
+# Miscellaneous
+/angularservice/.angular/cache
+/angularservice/.sass-cache/
+/angularservice/connect.lock
+/angularservice/coverage
+/angularservice/libpeerconnection.log
+/angularservice/testem.log
+/angularservice/typings
+
+# System files
+/angularservice/.DS_Store
+/angularservice/Thumbs.db
