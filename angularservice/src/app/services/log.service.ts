@@ -1,5 +1,5 @@
 export class LogService {
-    userLog() {
+    userLog(status: string) {
         console.log('User logging status cheched.....')
     }
 }

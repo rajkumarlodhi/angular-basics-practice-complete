@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LogService } from '../services/log.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -10,13 +9,13 @@ import { UserService } from '../services/user.service';
 export class UserComponent implements OnInit {
   @Input() user = { name: '', status: '' };
   @Input() id: number = 0;
-  constructor(private userService: UserService, private logService: LogService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+
   }
   updateStatus(id: number, status: string) {
     this.userService.updateStatus(id, status);
-    this.logService.userLog();
   }
 
 }

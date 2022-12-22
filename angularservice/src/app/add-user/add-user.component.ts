@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LogService } from '../services/log.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,13 +8,15 @@ import { UserService } from '../services/user.service';
 })
 export class AddUserComponent implements OnInit {
   userName: string = ''
-  constructor(private userService: UserService, private logService: LogService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.statusUpdated.subscribe((data) => {
+      alert(data);
+    });
   }
   onAddUser() {
     this.userService.addUser(this.userName, 'active');
-    this.logService.userLog();
   }
 
 }
