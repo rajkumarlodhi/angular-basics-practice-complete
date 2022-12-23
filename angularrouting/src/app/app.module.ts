@@ -6,10 +6,12 @@ import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { Routes, RouterModule } from '@angular/router';
+import { UserComponent } from './user/user.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'users', component: UsersComponent },
+  { path: 'users/:id/:name', component: UsersComponent },
   { path: 'categories', component: CategoriesComponent },
 ];
 
@@ -19,6 +21,7 @@ const appRoutes: Routes = [
     HomeComponent,
     UsersComponent,
     CategoriesComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
