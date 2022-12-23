@@ -2,6 +2,6 @@
     <button (click)="onCategoriesClick()">Go to categories</button>
 </div>
 
-<div>
-    <app-user></app-user>
-</div>
+<a [routerLink]="['/users',1,'Rajkumar']" [queryParams]="{page:1, search:'Rajkumar'}" [fragment]="'loading'">Get
+    Rajkumar Details
+</a>
