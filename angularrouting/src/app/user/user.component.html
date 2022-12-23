@@ -4,5 +4,10 @@
 </div>
 
 <div>
-    <a [routerLink]="['/users',2,'Rajkumar']">Get Data of Rajkumar</a>
+    <a [routerLink]="['/users',2,'Rajkumar']" [queryParams]="{page: 1, search: 'Rajkumar'}" [fragment]="'load'">Get Data
+        of Rajkumar</a>
+</div>
+
+<div>
+    <button (click)="getRamaDetails()">Get Rama Details</button>
 </div>
