@@ -35,5 +35,8 @@ export class UserComponent implements OnInit {
     this.router.navigate(['users/', 2, 'Rama'], { queryParams: { page: 1, search: 'Rajkumar' }, fragment: 'load' }
     )
   }
+  onUserEdit() {
+    this.router.navigate(['/users', this.user.id, this.user.name, 'edit'], { queryParamsHandling: 'preserve' })
+  }
 
 }

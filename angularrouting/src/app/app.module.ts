@@ -7,10 +7,15 @@ import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent, children: [{ path: ':id/:name', component: UserComponent }] },
+  {
+    path: 'users', component: UsersComponent, children: [
+      { path: ':id/:name', component: UserComponent },
+      { path: ':id/:name/edit', component: EditUserComponent }]
+  },
   { path: 'categories', component: CategoriesComponent },
 ];
 
@@ -21,6 +26,7 @@ const appRoutes: Routes = [
     UsersComponent,
     CategoriesComponent,
     UserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
