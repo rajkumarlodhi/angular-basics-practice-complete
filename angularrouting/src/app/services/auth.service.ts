@@ -8,6 +8,10 @@ export class AuthService {
         this.isLoggedIn = false;
     }
     isAuthenticated() {
-        return this.isLoggedIn;
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(this.isLoggedIn);
+            }, 500)
+        })
     }
 }
