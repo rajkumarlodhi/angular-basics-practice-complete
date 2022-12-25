@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription, interval } from 'rxjs';
+import { Subscription, interval, Observable } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,9 +15,22 @@ export class HomeComponent implements OnInit, OnDestroy {
       console.log(data, 'data+++++');
     })
 
-    this.routeSubscription = interval(1000).subscribe(count => {
-      console.log(count);
+    // this.routeSubscription = interval(1000).subscribe(count => {
+    //   console.log(count);
+    // })
+
+    let customObservable = new Observable((observer) => {
+      let count = 0;
+      setInterval(() => {
+        observer.next(count);
+        count++;
+      }, 1000)
+    });
+
+    this.routeSubscription = customObservable.subscribe(data => {
+      console.log(data);
     })
+
   }
   ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
