@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription, interval, Observable } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -35,7 +36,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       }, 1000)
     });
 
-    this.routeSubscription = customObservable.subscribe(data => {
+    this.routeSubscription = customObservable.pipe(map((data: any) => {
+      return 'count is ' + (data + 1);
+    })).subscribe(data => {
       console.log(data);
     }, error => {
       console.log('count is greater than 3');
