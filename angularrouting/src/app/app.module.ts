@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
@@ -12,6 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { DeactivateGuardService } from './services/guards/deactivate-guard.service';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +25,7 @@ import { DeactivateGuardService } from './services/guards/deactivate-guard.servi
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [AuthService, AuthGuardService, DeactivateGuardService],
   bootstrap: [AppComponent]
