@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.data.subscribe((data: Params) => {
       console.log(data, 'data+++++');
+    }, error => {
+      console.log(error)
     })
 
     // this.routeSubscription = interval(1000).subscribe(count => {
@@ -23,12 +25,22 @@ export class HomeComponent implements OnInit, OnDestroy {
       let count = 0;
       setInterval(() => {
         observer.next(count);
+        if (count > 3) {
+          observer.error('count is greater than 3');
+        }
+        if (count > 2) {
+          observer.complete();
+        }
         count++;
       }, 1000)
     });
 
     this.routeSubscription = customObservable.subscribe(data => {
       console.log(data);
+    }, error => {
+      console.log('count is greater than 3');
+    }, () => {
+      console.log('complete');
     })
 
   }
