@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <form (ngSubmit)="onFormSubmit()" #f="ngForm">
+                <button class="btn btn-sm btn-info" (click)="fillValues()">Fill Values</button>
                 <div *ngIf="!userdata.valid &&userdata.touched">User data is invalid</div>
                 <div ngModelGroup="userdata" #userdata="ngModelGroup">
                     <div class="form-group">

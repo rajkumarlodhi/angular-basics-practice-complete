@@ -7,7 +7,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./template-form.component.css']
 })
 export class TemplateFormComponent implements OnInit {
-  @ViewChild('f') signUpForm = NgForm;
+  // @ViewChild('f') signUpForm: NgForm;
+  // @ViewChild('f', { static: false }) signUpForm: NgForm;
+  @ViewChild('f', { static: false }) signUpForm: NgForm = Object();
+
+
   gender = 'male';
   about = '';
   constructor() { }
@@ -20,5 +24,13 @@ export class TemplateFormComponent implements OnInit {
   checkData() {
     console.log(this.signUpForm, 'chekc data changes');
   }
-
+  fillValues() {
+    this.signUpForm.form.patchValue({
+      userdata: {
+        username: 'Raj',
+        email: 'raj@gmail.com'
+      },
+      about: 'test about'
+    })
+  }
 }
