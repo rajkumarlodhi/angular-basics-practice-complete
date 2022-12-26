@@ -13,6 +13,7 @@ import { AuthGuardService } from './services/guards/auth-guard.service';
 import { DeactivateGuardService } from './services/guards/deactivate-guard.service';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
+import { TemplateFormComponent } from './template-form/template-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { UserService } from './services/user.service';
     UserComponent,
     EditUserComponent,
     PageNotFoundComponent,
+    TemplateFormComponent,
   ],
   imports: [
     BrowserModule,
