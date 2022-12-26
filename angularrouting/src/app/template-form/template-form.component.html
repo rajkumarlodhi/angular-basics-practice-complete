@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <form (ngSubmit)="onFormSubmit()" #f="ngForm">
-                <button class="btn btn-sm btn-info" (click)="fillValues()">Fill Values</button>
+                <button type="button" class="btn btn-sm btn-info" (click)="fillValues()">Fill Values</button>
                 <div *ngIf="!userdata.valid &&userdata.touched">User data is invalid</div>
                 <div ngModelGroup="userdata" #userdata="ngModelGroup">
                     <div class="form-group">
@@ -35,6 +35,13 @@
                     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
                 </div>
             </form>
+            <div *ngIf="submitted">
+                <h2>Submitted Data</h2>
+                <div>Username: {{user.username}}</div>
+                <div>Email: {{user.email}}</div>
+                <div>Gender: {{user.gender}}</div>
+                <div>About: {{user.about}}</div>
+            </div>
         </div>
     </div>
 </div>

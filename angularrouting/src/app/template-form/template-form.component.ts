@@ -7,19 +7,29 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./template-form.component.css']
 })
 export class TemplateFormComponent implements OnInit {
-  // @ViewChild('f') signUpForm: NgForm;
-  // @ViewChild('f', { static: false }) signUpForm: NgForm;
   @ViewChild('f', { static: false }) signUpForm: NgForm = Object();
-
-
+  submitted = false;
   gender = 'male';
   about = '';
+  user = {
+    username: '',
+    email: '',
+    gender: '',
+    about: '',
+  }
   constructor() { }
 
   ngOnInit(): void {
   }
   onFormSubmit() {
     console.log(this.signUpForm, 'form data++++')
+    this.user.username = this.signUpForm.value.userdata.username;
+    this.user.email = this.signUpForm.value.userdata.email;
+    this.user.gender = this.signUpForm.value.gender;
+    this.user.about = this.signUpForm.value.about;
+    this.submitted = true;
+
+    this.signUpForm.reset();
   }
   checkData() {
     console.log(this.signUpForm, 'chekc data changes');
