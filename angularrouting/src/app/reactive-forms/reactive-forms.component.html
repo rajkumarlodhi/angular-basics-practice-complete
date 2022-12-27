@@ -10,7 +10,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input class="form-control" type="text" formControlName="email">
+                        <input class="form-control" type="text" formControlName="email" />
                         <span class="help-block">Please enter email</span>
                     </div>
                 </div>
@@ -18,6 +18,14 @@
                     <label>
                         <input type="radio" name="gender" [value]="gender" formControlName="gender" />{{gender}}
                     </label>
+                </div>
+                <div formArrayName="hobbies">
+                    <div class="form-group" *ngFor="let hobby of hobbyControls; let i = index;">
+                        <input type="text" class="form-control" [formControlName]="i" />
+                    </div>
+                    <div class="my-2">
+                        <button type="button" class="btn btn-sm btn-warning" (click)="onAddHobby()">Add Hobby</button>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Submit</button>
             </form>
