@@ -18,5 +18,8 @@ export class ReactiveFormsComponent implements OnInit {
       'gender': new FormControl(null),
     })
   }
+  onSubmit() {
+    console.log(this.signUpForm, 'reactive signup form data');
+  }
 
 }
