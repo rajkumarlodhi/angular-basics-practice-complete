@@ -7,14 +7,10 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./reactive-forms.component.css']
 })
 export class ReactiveFormsComponent implements OnInit {
-  genders = ['male', 'female'];
+  restrictedNames: string[] = ['Rajkumar'];
   signUpForm: FormGroup = Object();
-  // signUpForm = new FormGroup({
-  //   'username': new FormControl('', Validators.required),
-  //   'email': new FormControl('', [Validators.required, Validators.email]),
-  //   'gender': new FormControl('female'),
-  //   'hobbies': new FormArray([])
-  // });
+  genders = ['male', 'female'];
+
   constructor() { }
 
   get hobbyControls() {
@@ -24,7 +20,7 @@ export class ReactiveFormsComponent implements OnInit {
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
       'userData': new FormGroup({
-        'username': new FormControl(null, Validators.required),
+        'username': new FormControl(null, [Validators.required, this.isRestrictedNames.bind(this)]),
         'email': new FormControl(null, [Validators.required, Validators.email]),
       }),
       'gender': new FormControl('female'),
@@ -33,12 +29,21 @@ export class ReactiveFormsComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.signUpForm, 'reactive signup form data');
-    console.warn(this.signUpForm.value);
+    console.warn(this.signUpForm.value.userData);
+    // console.log(this.signUpForm.get('userData.username')?.valid);
+    // console.log(this.signUpForm.get('userData.username')?.errors?.['required']);
   }
   onAddHobby() {
     const control = new FormControl(null, [Validators.required]);
     (<FormArray>this.signUpForm.get('hobbies')).push(control);
     console.log(this.signUpForm);
+  }
+  isRestrictedNames(control: FormControl): { [s: string]: boolean } {
+    if (this.restrictedNames.includes(control.value)) {
+      return { nameIsRestricted: true };
+    } else {
+      return {};
+    }
   }
 
 }
