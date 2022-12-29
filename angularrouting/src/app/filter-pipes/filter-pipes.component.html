@@ -9,7 +9,7 @@
     <div class="row">
         <div class="com-md-12">
             <div *ngFor="let user of users | filter: filteredString" class="my-3">
-                <div>User Name : {{user.name | shorten }}</div>
+                <div>User Name : {{user.name | shorten :6}}</div>
                 <div>Date of Birth : {{user.dob | date: 'fullDate' | uppercase }}</div>
             </div>
         </div>
