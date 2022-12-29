@@ -17,6 +17,7 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
+import { FilterPipe } from './pipes/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
     TemplateFormComponent,
     ReactiveFormsComponent,
     ShortenPipe,
-    FilterPipesComponent
+    FilterPipesComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
