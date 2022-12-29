@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-pipes.component.css']
 })
 export class FilterPipesComponent implements OnInit {
+  appStatus = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('User Data Recieved');
+    }, 3000);
+  })
   filteredString: string = '';
   users = [{ name: 'Aman', dob: new Date('1996-12-10') }, { name: 'Rohit', dob: new Date('1995-10-15') }, { name: 'Divyesh', dob: new Date('1994-06-05') }];
   constructor() { }

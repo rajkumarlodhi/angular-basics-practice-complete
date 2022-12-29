@@ -1,6 +1,13 @@
 <div class="container">
     <div class="row">
-        <button class="btn btn-primary btn-sm" (click)="onAddUser()">Add User</button>
+        <div class="col-md-12">
+            <button class="btn btn-primary btn-sm" (click)="onAddUser()">Add User</button>
+        </div>
+    </div>
+    <div class="my-2">
+        {{appStatus | async}}
+    </div>
+    <div class="row">
         <div class="com-md-12">
             <label for="">Search by User Name</label>
             <input type="text" class="form-control" [(ngModel)]="filteredString">
