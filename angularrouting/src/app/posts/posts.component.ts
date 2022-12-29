@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -9,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PostsComponent implements OnInit {
   postForm: FormGroup = Object();
+  posts: any = [];
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -16,6 +18,19 @@ export class PostsComponent implements OnInit {
       'title': new FormControl(null, [Validators.required]),
       'content': new FormControl(null, [Validators.required]),
     })
+    this.getPosts();
+  }
+  getPosts() {
+    this.http.get('https://my-rkl-db-default-rtdb.firebaseio.com/posts.json').pipe(map((res: any) => {
+      const posts = []
+      for (let key in res)
+        posts.push({ ...res[key], key })
+
+      return posts;
+    })).subscribe((response: any) => {
+      console.log(response);
+      this.posts = response;
+    });
   }
   onCreatePost() {
     console.log(this.postForm.value);
