@@ -15,6 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,8 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormsComponent,
+    ShortenPipe,
+    FilterPipesComponent
   ],
   imports: [
     BrowserModule,
