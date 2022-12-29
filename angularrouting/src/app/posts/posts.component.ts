@@ -23,8 +23,6 @@ export class PostsComponent implements OnInit {
     this.http.post('https://my-rkl-db-default-rtdb.firebaseio.com/posts.json', postData).subscribe(response => {
       console.log(response, 'response from backend');
     })
-
-    //to study firebase to create server for store database to post form
   }
 
 }
