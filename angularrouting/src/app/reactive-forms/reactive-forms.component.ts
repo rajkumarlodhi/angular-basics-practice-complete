@@ -27,6 +27,18 @@ export class ReactiveFormsComponent implements OnInit {
       'gender': new FormControl('female'),
       'hobbies': new FormArray([])
     })
+
+    this.signUpForm.statusChanges.subscribe(data => {
+      console.log(data, 'check form changes');
+    })
+
+    this.signUpForm.patchValue({
+      'userData': {
+        username: 'Hai Rajkumar',
+      },
+      gender: 'male',
+      hobbies: []
+    })
   }
   onSubmit() {
     console.log(this.signUpForm, 'reactive signup form data');
