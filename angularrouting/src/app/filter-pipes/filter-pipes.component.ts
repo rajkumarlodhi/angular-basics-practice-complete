@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterPipesComponent implements OnInit {
 
-  users = [{ name: 'Aman', dob: '1996-12-10' }, { name: 'Rohit', dob: '1995-10-15' }, { name: 'Divyesh', dob: '1994-06-05' }];
+  users = [{ name: 'Aman', dob: new Date('1996-12-10') }, { name: 'Rohit', dob: new Date('1995-10-15') }, { name: 'Divyesh', dob: new Date('1994-06-05') }];
   constructor() { }
 
   ngOnInit(): void {

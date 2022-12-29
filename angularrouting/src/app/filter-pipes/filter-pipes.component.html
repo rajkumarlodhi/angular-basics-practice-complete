@@ -3,7 +3,7 @@
         <div class="com-md-12">
             <div *ngFor="let user of users">
                 <div>User Name : {{user.name | shorten }}</div>
-                <div>Date of Birth : {{user.dob | date: 'dd-MM-yyyy' }}</div>
+                <div>Date of Birth : {{user.dob | date: 'fullDate' | uppercase }}</div>
             </div>
         </div>
     </div>
