@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -44,6 +45,18 @@ export class ReactiveFormsComponent implements OnInit {
     } else {
       return {};
     }
+  }
+  isRestrictedEmails(control: FormControl): Promise<any> | Observable<any> {
+    let promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'test@test.com') {
+          resolve({ emailIsRestricted: true })
+        } else {
+          resolve(null)
+        }
+      }, 2000);
+    })
+    return promise;
   }
 
 }

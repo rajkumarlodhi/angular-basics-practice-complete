@@ -18,9 +18,16 @@
                         <label for="email">Email</label>
                         <input class="form-control" type="text" formControlName="email" />
                         <span class="help-block"
-                            *ngIf="!signUpForm.get('userData.email')?.valid && signUpForm.get('userData.email')?.touched">Please
-                            enter valid
-                            email</span>
+                            *ngIf="!signUpForm.get('userData.email')?.valid && signUpForm.get('userData.email')?.touched">
+                            <span
+                                *ngIf="!signUpForm.get('userData.email')?.valid || signUpForm.get('userData.email')?.errors?.['required']">This
+                                Please
+                                enter valid
+                                email</span>
+                            <span *ngIf="signUpForm.get('userData.email')?.errors?.['emailIsRestricted']">This email
+                                is
+                                restricted!</span>
+                        </span>
                     </div>
                 </div>
                 <div *ngFor="let gender of genders">
