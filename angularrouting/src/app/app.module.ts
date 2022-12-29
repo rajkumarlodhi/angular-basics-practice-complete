@@ -18,6 +18,8 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { PostsComponent } from './posts/posts.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +33,15 @@ import { FilterPipe } from './pipes/filter.pipe';
     ReactiveFormsComponent,
     ShortenPipe,
     FilterPipesComponent,
-    FilterPipe
+    FilterPipe,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [AuthService, AuthGuardService, DeactivateGuardService, UserService],
   bootstrap: [AppComponent]

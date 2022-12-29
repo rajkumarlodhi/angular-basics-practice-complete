@@ -11,6 +11,7 @@ import { DeactivateGuardService } from './services/guards/deactivate-guard.servi
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
+import { PostsComponent } from './posts/posts.component';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, data: { page: 1, search: 'Rajkumar' } },
     {
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
     { path: 'categories', component: CategoriesComponent },
     { path: 'reactiveforms', component: ReactiveFormsComponent },
     { path: 'filter-pipe', component: FilterPipesComponent },
+    { path: 'posts', component: PostsComponent },
     { path: 'not-found', component: PageNotFoundComponent },
     { path: '**', redirectTo: 'not-found' },
 ];
