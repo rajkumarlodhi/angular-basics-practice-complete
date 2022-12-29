@@ -1,5 +1,6 @@
 <div class="container">
     <div class="row">
+        <button class="btn btn-primary btn-sm" (click)="onAddUser()">Add User</button>
         <div class="com-md-12">
             <label for="">Search by User Name</label>
             <input type="text" class="form-control" [(ngModel)]="filteredString">
@@ -7,7 +8,7 @@
     </div>
     <div class="row">
         <div class="com-md-12">
-            <div *ngFor="let user of users | filter: filteredString">
+            <div *ngFor="let user of users | filter: filteredString" class="my-3">
                 <div>User Name : {{user.name | shorten }}</div>
                 <div>Date of Birth : {{user.dob | date: 'fullDate' | uppercase }}</div>
             </div>
