@@ -31,7 +31,16 @@ export class PostsComponent implements OnInit {
     const postData: Post = this.postForm.value;
     this.postService.creatPost(postData).subscribe((response) => {
       console.log(response, 'response from backend');
+      this.getPosts();
+      this.postForm.reset();
     })
+    // this.postForm.reset();
+  }
+  onClearPosts(event: Event) {
+    event.preventDefault();
+    this.postService.clearPosts();
+    // this.getPosts();
+    this.posts = [];
   }
 
 }

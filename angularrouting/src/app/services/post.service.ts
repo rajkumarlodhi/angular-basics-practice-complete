@@ -19,4 +19,9 @@ export class postService {
     creatPost(postData: Post) {
         return this.http.post(url, postData);
     }
+    clearPosts() {
+        this.http.delete(url).subscribe(response => {
+            console.log(response)
+        });
+    }
 }
