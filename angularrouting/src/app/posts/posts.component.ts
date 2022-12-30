@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs';
+import { postService } from '../services/post.service';
 import { Post } from './Post.model';
 
 @Component({
@@ -12,7 +11,7 @@ import { Post } from './Post.model';
 export class PostsComponent implements OnInit {
   postForm: FormGroup = Object();
   posts: Post[] = [];
-  constructor(private http: HttpClient) { }
+  constructor(private postService: postService) { }
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
@@ -22,21 +21,15 @@ export class PostsComponent implements OnInit {
     this.getPosts();
   }
   getPosts() {
-    this.http.get<{ [key: string]: Post }>('https://my-rkl-db-default-rtdb.firebaseio.com/posts.json').pipe(map((res) => {
-      const posts: Post[] = [];
-      for (let key in res)
-        posts.push({ ...res[key], key })
-
-      return posts;
-    })).subscribe((response: Post[]) => {
+    this.postService.fetchPosts().subscribe((response) => {
       console.log(response);
       this.posts = response;
     });
   }
   onCreatePost() {
     console.log(this.postForm.value);
-    const postData = this.postForm.value;
-    this.http.post('https://my-rkl-db-default-rtdb.firebaseio.com/posts.json', postData).subscribe((response) => {
+    const postData: Post = this.postForm.value;
+    this.postService.creatPost(postData).subscribe((response) => {
       console.log(response, 'response from backend');
     })
   }
