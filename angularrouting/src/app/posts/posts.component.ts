@@ -11,6 +11,7 @@ import { Post } from './Post.model';
 export class PostsComponent implements OnInit {
   postForm: FormGroup = Object();
   posts: Post[] = [];
+  error = null;
   constructor(private postService: postService) { }
 
   ngOnInit(): void {
@@ -24,7 +25,10 @@ export class PostsComponent implements OnInit {
     this.postService.fetchPosts().subscribe((response) => {
       console.log(response);
       this.posts = response;
-    });
+    }, (error => {
+      this.error = error.message;
+      console.log(error.message);
+    }));
   }
   onCreatePost() {
     console.log(this.postForm.value);
