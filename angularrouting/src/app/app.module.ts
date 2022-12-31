@@ -22,6 +22,7 @@ import { PostsComponent } from './posts/posts.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LogginInterceptorService } from './services/logging-interceptor.service';
+import { AuthComponent } from './auth/auth.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { LogginInterceptorService } from './services/logging-interceptor.service
     ShortenPipe,
     FilterPipesComponent,
     FilterPipe,
-    PostsComponent
+    PostsComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
