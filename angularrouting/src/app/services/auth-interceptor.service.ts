@@ -2,12 +2,13 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/c
 import { Observable } from "rxjs";
 
 export class AuthInterceptorService implements HttpInterceptor {
-    // intercept(req: HttpRequest<any>, next: HttpHandler) {
-    //     return next.handle(req);
-    // }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log('send request intereptor ');
-        return next.handle(req);
+        let modifiedRequest = req.clone({
+            headers: req.headers.append('auth', 'abc'),
+            params: req.params.append('hai', 'Helo world')
+        })
+        return next.handle(modifiedRequest);
     }
 
 }
