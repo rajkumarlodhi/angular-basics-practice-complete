@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpEventType, HttpHeaders, HttpParams, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs";
+import { map, tap } from "rxjs";
 import { Post } from "../posts/Post.model";
 const url = 'https://my-rkl-db-default-rtdb.firebaseio.com/posts.json';
 @Injectable({
@@ -28,11 +28,22 @@ export class postService {
         return this.http.post(url, postData, {
             headers: new HttpHeaders({
                 'custom-header': 'Raj'
-            })
+            }),
+            observe: 'response',
         });
     }
     clearPosts() {
-        this.http.delete(url).subscribe(response => {
+        this.http.delete(url, {
+            observe: 'events',
+            responseType: 'text',
+        }).pipe(tap((response: any) => {
+            if (response === HttpEventType.Sent) {
+                console.log('request sent')
+            }
+            if (response === HttpEventType.Response) {
+                console.log(response);
+            }
+        })).subscribe(response => {
             console.log(response)
         });
     }
