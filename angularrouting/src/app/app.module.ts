@@ -23,6 +23,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LogginInterceptorService } from './services/logging-interceptor.service';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +40,7 @@ import { AuthComponent } from './auth/auth.component';
     FilterPipe,
     PostsComponent,
     AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { AuthService } from "../services/auth.service";
     templateUrl: './auth.component.html',
 })
 export class AuthComponent {
+    isLoading: boolean = false;
     isLoginMode = true;
     passwordErrors: any = '';
     onSwitchMode() {
@@ -18,12 +19,15 @@ export class AuthComponent {
         if (!authForm.valid) {
             return;
         }
+        this.isLoading = true;
         if (this.isLoginMode) {
 
         } else {
             this.authService.signUp(authForm.value.email, authForm.value.password).subscribe(response => {
+                this.isLoading = false;
                 console.log(response);
             }, error => {
+                this.isLoading = false;
                 console.log(error);
             })
         }
