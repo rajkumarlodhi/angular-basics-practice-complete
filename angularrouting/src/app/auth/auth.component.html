@@ -4,6 +4,7 @@
             <div *ngIf="isLoading" class="text-center my-4">
                 <app-loading-spinner></app-loading-spinner>
             </div>
+            <div class="text-alert text-danger">{{error}}</div>
             <form #authForm="ngForm" (ngSubmit)="onFormSubmit(authForm)" *ngIf="!isLoading">
                 <div class="form-group">
                     <label for="email">Email</label>

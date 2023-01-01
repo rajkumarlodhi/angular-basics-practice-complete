@@ -10,6 +10,7 @@ export class AuthComponent {
     isLoading: boolean = false;
     isLoginMode = true;
     passwordErrors: any = '';
+    error: string = '';
     onSwitchMode() {
         this.isLoginMode = !this.isLoginMode;
     }
@@ -26,9 +27,10 @@ export class AuthComponent {
             this.authService.signUp(authForm.value.email, authForm.value.password).subscribe(response => {
                 this.isLoading = false;
                 console.log(response);
-            }, error => {
+            }, (errorMessage) => {
+                this.error = errorMessage;
                 this.isLoading = false;
-                console.log(error);
+                console.log(errorMessage, 'ON AUTH');
             })
         }
     }
