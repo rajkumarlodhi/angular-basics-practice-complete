@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthResponseData, AuthService } from "../services/auth.service";
 
@@ -15,7 +16,7 @@ export class AuthComponent {
     onSwitchMode() {
         this.isLoginMode = !this.isLoginMode;
     }
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private router: Router) { }
     onFormSubmit(authForm: NgForm) {
         //console.log(authForm.form.controls['email'].errors?.['required']);
         if (!authForm.valid) {
@@ -43,7 +44,8 @@ export class AuthComponent {
         authObs.subscribe({
             next: (response) => {
                 this.isLoading = false;
-                console.log(response);
+                // console.log(response);
+                this.router.navigate(['/']);
             },
             error: (errorMessage) => {
                 this.error = errorMessage;

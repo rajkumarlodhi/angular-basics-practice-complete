@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, throwError } from "rxjs";
+import { catchError, Subject, tap, throwError } from "rxjs";
+import { User } from "../auth/user.model";
 export interface AuthResponseData {
     idToken: string;
     email: string;
@@ -15,12 +16,24 @@ export interface AuthResponseData {
 export class AuthService {
     constructor(private http: HttpClient) { }
     isLoggedIn = false;
+    userSub = new Subject<User>();
     signUp(email: string, password: string) {
-        return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCHhP23tWbv_EAZ74vxCY-w-uKaBHbtDFU', { email, password, returnSecureToken: true }).pipe(catchError(this.getErrorHandler));
+        return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCHhP23tWbv_EAZ74vxCY-w-uKaBHbtDFU', { email, password, returnSecureToken: true }).pipe(catchError(this.getErrorHandler), tap<AuthResponseData>(this.handleUser.bind(this)));
     }
     login(email: string, password: string) {
-        return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCHhP23tWbv_EAZ74vxCY-w-uKaBHbtDFU', { email, password, returnSecureToken: true }).pipe(catchError(this.getErrorHandler));
+        return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCHhP23tWbv_EAZ74vxCY-w-uKaBHbtDFU', { email, password, returnSecureToken: true }).pipe(catchError(this.getErrorHandler), tap<AuthResponseData>(this.handleUser.bind(this)));
     }
+
+    private handleUser(response: AuthResponseData) {
+        const expireDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
+        const user = new User(
+            response.email,
+            response.localId,
+            response.idToken,
+            expireDate);
+        this.userSub.next(user);
+    }
+
     getErrorHandler(errorRes: HttpErrorResponse) {
         let errorMessage = 'An error ocurred!';
         if (!errorRes.error || !errorRes.error.error) {
