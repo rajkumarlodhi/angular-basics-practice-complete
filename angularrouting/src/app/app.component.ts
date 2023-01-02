@@ -19,7 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
   onLoginClick() {
-    this.authService.login();
+    // this.authService.login();
   }
   onLogoutClick() {
     this.authService.logOut();
