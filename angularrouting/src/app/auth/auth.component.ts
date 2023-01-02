@@ -23,32 +23,13 @@ export class AuthComponent {
         }
 
         this.isLoading = true;
+        this.error = '';
 
         let authObs: Observable<AuthResponseData>;
         if (this.isLoginMode) {
-            this.authService.login(authForm.value.email, authForm.value.password).subscribe({
-                next: (response) => {
-                    this.isLoading = false;
-                    console.log(response);
-                },
-                error: (errorMessage) => {
-                    this.error = errorMessage;
-                    this.isLoading = false;
-                    console.log(errorMessage, 'ON AUTH');
-                },
-            });
+            authObs = this.authService.login(authForm.value.email, authForm.value.password);
         } else {
-            this.authService.signUp(authForm.value.email, authForm.value.password).subscribe({
-                next: (response) => {
-                    this.isLoading = false;
-                    console.log(response);
-                },
-                error: (errorMessage) => {
-                    this.error = errorMessage;
-                    this.isLoading = false;
-                    console.log(errorMessage, 'ON AUTH');
-                },
-            });
+            authObs = this.authService.signUp(authForm.value.email, authForm.value.password);
         }
 
         // authObs.subscribe(response => {
@@ -59,17 +40,17 @@ export class AuthComponent {
         //     this.isLoading = false;
         //     console.log(errorMessage, 'ON AUTH');
         // })
-        // authObs.subscribe({
-        //     next: (response) => {
-        //         this.isLoading = false;
-        //         console.log(response);
-        //     },
-        //     error: (errorMessage) => {
-        //         this.error = errorMessage;
-        //         this.isLoading = false;
-        //         console.log(errorMessage, 'ON AUTH');
-        //     },
-        // })
+        authObs.subscribe({
+            next: (response) => {
+                this.isLoading = false;
+                console.log(response);
+            },
+            error: (errorMessage) => {
+                this.error = errorMessage;
+                this.isLoading = false;
+                console.log(errorMessage, 'ON AUTH');
+            },
+        })
     }
     getPasswordErrors(password: any) {
         console.log(password, 'password');
