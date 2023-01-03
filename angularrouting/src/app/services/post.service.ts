@@ -10,16 +10,7 @@ const url = 'https://my-rkl-db-default-rtdb.firebaseio.com/posts.json';
 export class postService {
     constructor(private http: HttpClient, private authService: AuthService) { }
     fetchPosts() {
-        // this.authService.userSub.subscribe(userData => {
-        //     console.log(userData, 'userData on post service')
-        // })
-        return this.authService.userSub.pipe(take(1), switchMap((user: any) => {
-            let searchParams = new HttpParams();
-            searchParams = searchParams.append('auth', user.token);
-            return this.http.get<{ [key: string]: Post }>(url, {
-                params: searchParams,
-            })
-        }), map((res) => {
+        return this.http.get<{ [key: string]: Post }>(url).pipe(map((res) => {
             const posts: Post[] = [];
             for (let key in res)
                 posts.push({ ...res[key], key })

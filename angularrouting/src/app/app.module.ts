@@ -25,6 +25,7 @@ import { LogginInterceptorService } from './services/logging-interceptor.service
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +62,11 @@ import { NavigationComponent } from './navigation/navigation.component';
       provide: HTTP_INTERCEPTORS,
       useClass: LogginInterceptorService,
       multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptorService,
+      multi: true
     },
     AuthService,
     AuthGuardService,
