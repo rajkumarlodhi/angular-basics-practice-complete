@@ -11,7 +11,8 @@ export class NavigationComponent implements OnInit {
     ngOnInit(): void {
         this.authService.userSub.subscribe((user) => {
             console.log(user, 'data on navigation file');
-            this.isAuthenticated = user ? true : false;
+            this.isAuthenticated = user.email && user._token ? true : false;
+            console.log(this.isAuthenticated);
         })
     }
 }
