@@ -6,17 +6,21 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'angularrouting';
   userAdded = false;
-  userAddedSubscription = new Subscription
-  constructor(private authService: AuthService, private userService: UserService) { }
+  userAddedSubscription = new Subscription();
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
   ngOnInit(): void {
-    this.userAddedSubscription = this.userService.userAddedEvent.subscribe(data => {
-      this.userAdded = data;
-    });
+    // this.userAddedSubscription = this.userService.userAddedEvent.subscribe(data => {
+    //   this.userAdded = data;
+    // });
+    this.authService.autoLogin();
   }
   onLoginClick() {
     // this.authService.login();
@@ -25,6 +29,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authService.logOut();
   }
   ngOnDestroy(): void {
-    this.userAddedSubscription.unsubscribe();
+    //this.userAddedSubscription.unsubscribe();
   }
 }
