@@ -1,32 +1,75 @@
 <ul class="nav flex-column nav-pills">
-    <li class="nav-item" *ngIf="!isAuthenticated">
-        <a class="nav-link" routerLink="/auth" routerLinkActive="active"
-            [routerLinkActiveOptions]="{         exact: true }">Authenticate</a>
+  <li class="nav-item" *ngIf="!isAuthenticated">
+    <a
+      class="nav-link"
+      routerLink="/auth"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Authenticate</a
+    >
+  </li>
+  <li class="nav-item" *ngIf="isAuthenticated">
+    <a
+      class="nav-link"
+      href="#"
+      (click)="onLogout($event)"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Logout</a
+    >
+  </li>
+  <div *ngIf="isAuthenticated">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
     </li>
-    <li class="nav-item" *ngIf="isAuthenticated">
-        <a class="nav-link" routerLink="/auth" routerLinkActive="active"
-            [routerLinkActiveOptions]="{         exact: true }">Logout</a>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/users" routerLinkActive="active"
+        >Users</a
+      >
     </li>
-    <div *ngIf="isAuthenticated">
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/" routerLinkActive="active"
-                [routerLinkActiveOptions]="{         exact: true }">Home</a>
-        </li>
-        <li class="nav-item"><a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a></li>
-        <li class="nav-item"><a class="nav-link" [routerLink]="['/categories']" routerLinkActive="active">Categories</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/templateform']" routerLinkActive="active">
-                Template Form
-            </a>
-        </li>
-        <li class="nav-item"><a class="nav-link" [routerLink]="['/reactiveforms']" routerLinkActive="active">Reactive
-                Forms</a>
-        </li>
-        <li class="nav-item"><a class="nav-link" [routerLink]="['/filter-pipe']" routerLinkActive="active">Filter
-                Pipes</a>
-        </li>
-        <li class="nav-item"><a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active">Posts</a>
-        </li>
-    </div>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/categories']"
+        routerLinkActive="active"
+        >Categories</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/templateform']"
+        routerLinkActive="active"
+      >
+        Template Form
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/reactiveforms']"
+        routerLinkActive="active"
+        >Reactive Forms</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/filter-pipe']"
+        routerLinkActive="active"
+        >Filter Pipes</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active"
+        >Posts</a
+      >
+    </li>
+  </div>
 </ul>
