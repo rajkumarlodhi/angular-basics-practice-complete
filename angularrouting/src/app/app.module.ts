@@ -26,6 +26,7 @@ import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
+import { AlertModalComponent } from './shared/alert-model/alert-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,13 +45,14 @@ import { AuthTokenInterceptorService } from './services/auth-token-interceptor.s
     AuthComponent,
     LoadingSpinnerComponent,
     NavigationComponent,
+    AlertModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
@@ -66,12 +68,13 @@ import { AuthTokenInterceptorService } from './services/auth-token-interceptor.s
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthTokenInterceptorService,
-      multi: true
+      multi: true,
     },
     AuthService,
     AuthGuardService,
     DeactivateGuardService,
-    UserService],
-  bootstrap: [AppComponent]
+    UserService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

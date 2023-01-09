@@ -23,7 +23,6 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree> {
     return this.authService.userSub.pipe(
       map((user: any) => {
-        console.log(user, 'user++++on authguard');
         if (user.token == '' && user.email == '') {
           return this.router.createUrlTree(['/auth']);
         }
