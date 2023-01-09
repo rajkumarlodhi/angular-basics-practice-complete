@@ -52,10 +52,8 @@ export class AuthService {
     const expireDate = new Date(
       new Date().getTime() + +response.expiresIn * 1000
     );
-    console.log(expireDate, 'expireDate extend+++');
-    console.log(new Date(), 'expireDate without extend+++');
+
     let date = new Date().getTime();
-    console.log(date, 'expireDate without extend+++');
 
     const user = new User(
       response.email,
@@ -65,7 +63,6 @@ export class AuthService {
     );
     this.userSub.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
-    console.log(user, 'user++++++handleUser');
     this.autoLogout(+response.expiresIn * 1000);
   }
 
@@ -97,17 +94,11 @@ export class AuthService {
       expirationDate: string;
       localId: string;
     } = JSON.parse(localStorage.getItem('userData') || '{}');
-    console.log(userData, 'userData console-1 ++++++++++');
-    console.log(
-      Date.parse(userData.expirationDate),
-      'userData.expirationDate console-11 ++++++++++'
-    );
+
     if (
       JSON.stringify(userData) === '{}' ||
       (userData._token === '' && userData.email == '')
     ) {
-      console.log(userData, 'userData console-2 ++++++++++');
-
       return;
     }
     let user = new User(
@@ -116,24 +107,16 @@ export class AuthService {
       userData._token,
       new Date(userData.expirationDate)
     );
-    console.log(userData, 'userData console-3 ++++++++++');
 
     if (user._token) {
-      console.log(userData, 'userData console-4 ++++++++++');
-
       this.userSub.next(user);
     }
     let date = new Date().getTime();
     let expirationDate = new Date(userData.expirationDate).getTime();
-    console.log(expirationDate, 'expirationDate++++');
-    console.log(date, 'date++++');
-    console.log(userData, 'userData console-5 ++++++++++');
 
     this.autoLogout(expirationDate + date);
   }
   autoLogout(expirationDate: number) {
-    console.log(expirationDate, 'console-6 expirationDate++++');
-
     this.clearTimeOut = setTimeout(() => {
       this.logOut();
     }, expirationDate);
