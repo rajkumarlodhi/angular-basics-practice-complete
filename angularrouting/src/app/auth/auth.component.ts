@@ -1,9 +1,10 @@
-import { Component, ComponentFactoryResolver } from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthResponseData, AuthService } from '../services/auth.service';
 import { AlertModalComponent } from '../shared/alert-model/alert-modal.component';
+import { PlaceholderDirective } from '../shared/Placeholder.directive';
 
 @Component({
   selector: 'app-auth',
@@ -14,6 +15,8 @@ export class AuthComponent {
   isLoginMode = true;
   passwordErrors: any = '';
   error: string = '';
+  @ViewChild(PlaceholderDirective)
+  alertHost!: PlaceholderDirective;
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
@@ -70,6 +73,8 @@ export class AuthComponent {
       this.componentFactoryResolver.resolveComponentFactory(
         AlertModalComponent
       );
+    this.alertHost.ViewContainerRef.clear();
+    this.alertHost.ViewContainerRef.createComponent(componentFactory);
   }
   getPasswordErrors(password: any) {
     console.log(password, 'password');
