@@ -26,7 +26,7 @@ import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
-import { AlertModalComponent } from './shared/alert-model/alert-modal.component';
+import { PlaceholderDirective } from './shared/Placeholder.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +45,7 @@ import { AlertModalComponent } from './shared/alert-model/alert-modal.component'
     AuthComponent,
     LoadingSpinnerComponent,
     NavigationComponent,
-    AlertModalComponent,
+    PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
