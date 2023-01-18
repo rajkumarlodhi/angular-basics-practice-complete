@@ -6,7 +6,6 @@ import { CategoriesComponent } from './categories/categories.component';
 import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthGuardService } from './services/guards/auth-guard.service';
 import { DeactivateGuardService } from './services/guards/deactivate-guard.service';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
@@ -19,7 +18,7 @@ const appRoutes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    canActivateChild: [AuthGuardService],
+    canActivate: [AuthGuard],
     children: [
       { path: ':id/:name', component: UserComponent },
       {
