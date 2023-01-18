@@ -5,23 +5,21 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+  usersData = ['Rama', 'Krishna', 'Rajkumar'];
+  constructor(private router: Router, private userService: UserService) {}
 
-  constructor(private router: Router, private userService: UserService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   onCategoriesClick() {
     //write program logic
 
-    //write redirect to 
+    //write redirect to
     // this.router.navigateByUrl('/categories');
     this.router.navigate(['/categories']);
   }
   onUserAddedClick() {
     this.userService.addUser();
   }
-
 }

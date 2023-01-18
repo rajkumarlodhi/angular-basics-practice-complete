@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -7,7 +8,7 @@ import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [UsersComponent, UserComponent, EditUserComponent],
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule, CommonModule],
   exports: [UserComponent, EditUserComponent],
 })
 export class UserModule {}
