@@ -18,7 +18,6 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LogginInterceptorService } from './services/logging-interceptor.service';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { PlaceholderDirective } from './shared/Placeholder.directive';
