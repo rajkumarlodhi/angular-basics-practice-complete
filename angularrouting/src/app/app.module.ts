@@ -15,16 +15,16 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { FilterPipe } from './pipes/filter.pipe';
-import { PostsComponent } from './posts/posts.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LogginInterceptorService } from './services/logging-interceptor.service';
-import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { PlaceholderDirective } from './shared/Placeholder.directive';
 import { UserModule } from './user.moduel';
+import { PostModule } from './post.module';
+import { AuthModule } from './auth.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,19 +36,18 @@ import { UserModule } from './user.moduel';
     ShortenPipe,
     FilterPipesComponent,
     FilterPipe,
-    PostsComponent,
-    AuthComponent,
-    LoadingSpinnerComponent,
     NavigationComponent,
     PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
+    UserModule,
+    PostModule,
+    AuthModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    UserModule,
   ],
   providers: [
     {
