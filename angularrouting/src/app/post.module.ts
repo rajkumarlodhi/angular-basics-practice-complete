@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ShortenPipe } from './pipes/shorten.pipe';
 import { PostsComponent } from './posts/posts.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { SharedModule } from './shared.module';
@@ -12,7 +10,7 @@ import { SharedModule } from './shared.module';
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
+      { path: '', component: PostsComponent, canActivate: [AuthGuard] },
     ]),
   ],
   exports: [PostsComponent],

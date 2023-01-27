@@ -8,6 +8,14 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { page: 1, search: 'Rajkumar' } },
+  {
+    path: 'users',
+    loadChildren: () => import('./user.module').then((m) => m.UserModule),
+  },
+  {
+    path: 'posts',
+    loadChildren: () => import('./post.module').then((m) => m.PostModule),
+  },
   { path: 'templateform', component: TemplateFormComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'reactiveforms', component: ReactiveFormsComponent },
