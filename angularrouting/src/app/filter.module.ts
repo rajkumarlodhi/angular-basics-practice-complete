@@ -2,19 +2,19 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
-import { PostsComponent } from './posts/posts.component';
-import { AuthGuard } from './services/guards/auth.guard';
 import { SharedModule } from './shared.module';
 
 @NgModule({
-  declarations: [PostsComponent],
+  declarations: [FilterPipesComponent],
+
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
+      { path: 'filter-pipe', component: FilterPipesComponent },
     ]),
   ],
-  exports: [PostsComponent],
+  exports: [FilterPipesComponent, SharedModule],
 })
-export class PostModule {}
+export class FilterModule {}

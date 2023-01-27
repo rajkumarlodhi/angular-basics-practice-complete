@@ -12,18 +12,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { ShortenPipe } from './pipes/shorten.pipe';
-import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
-import { FilterPipe } from './pipes/filter.pipe';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LogginInterceptorService } from './services/logging-interceptor.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { PlaceholderDirective } from './shared/Placeholder.directive';
-import { UserModule } from './user.moduel';
+import { UserModule } from './user.module';
 import { PostModule } from './post.module';
 import { AuthModule } from './auth.module';
+import { FilterModule } from './filter.module';
+import { UserResolveService } from './services/resolvers/user-resolve.service';
+import { CoreModuel } from './core.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,42 +32,21 @@ import { AuthModule } from './auth.module';
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormsComponent,
-    ShortenPipe,
-    FilterPipesComponent,
-    FilterPipe,
     NavigationComponent,
     PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     UserModule,
     PostModule,
     AuthModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LogginInterceptorService,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthTokenInterceptorService,
-      multi: true,
-    },
-    AuthService,
-    AuthGuardService,
-    DeactivateGuardService,
-    UserService,
+    FilterModule,
+    UserModule,
+    CoreModuel,
   ],
   bootstrap: [AppComponent],
 })

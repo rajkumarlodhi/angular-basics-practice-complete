@@ -1,24 +1,28 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <button class="btn btn-primary btn-sm" (click)="onAddUser()">Add User</button>
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-primary btn-sm" (click)="onAddUser()">
+        Add User
+      </button>
+    </div>
+  </div>
+  <div class="my-2">
+    {{ appStatus | async }}
+  </div>
+  <div class="row">
+    <div class="com-md-12">
+      <label for="">Search by User Name</label>
+      <input type="text" class="form-control" [(ngModel)]="filteredString" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="com-md-12">
+      <div *ngFor="let user of users | filter : filteredString" class="my-3">
+        <div>User Name : {{ user.name | shorten : 6 }}</div>
+        <div>
+          Date of Birth : {{ user.dob | date : "fullDate" | uppercase }}
         </div>
+      </div>
     </div>
-    <div class="my-2">
-        {{appStatus | async}}
-    </div>
-    <div class="row">
-        <div class="com-md-12">
-            <label for="">Search by User Name</label>
-            <input type="text" class="form-control" [(ngModel)]="filteredString">
-        </div>
-    </div>
-    <div class="row">
-        <div class="com-md-12">
-            <div *ngFor="let user of users | filter: filteredString" class="my-3">
-                <div>User Name : {{user.name | shorten :6}}</div>
-                <div>Date of Birth : {{user.dob | date: 'fullDate' | uppercase }}</div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

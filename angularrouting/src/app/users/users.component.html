@@ -4,7 +4,7 @@
       [routerLink]="['/users', i, user]"
       [queryParams]="{ page: 1, search: user }"
       class="nav-link"
-      >Get Rama Details</a
+      >Get {{ user | shorten : 3 }} Details</a
     >
   </li>
 </ul>
